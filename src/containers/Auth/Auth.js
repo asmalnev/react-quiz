@@ -5,14 +5,15 @@ import Input from '../../components/UI/Input/Input'
 import is from 'is_js'
 
 export default class Auth extends Component {
+
   state = {
     isFormValid: false,
     formControls: {
       email: {
         value: '',
         type: 'email',
-        label: 'E-mail',
-        errorMessage: 'Введите корректный E-mail',
+        label: 'Email',
+        errorMessage: 'Введите корректный email',
         valid: false,
         touched: false,
         validation: {
@@ -70,8 +71,8 @@ export default class Auth extends Component {
   }
 
   onChangeHandler = (event, controlName) => {
-    const formControls = {...this.state.formControls}
-    const control = {...formControls[controlName]}
+    const formControls = { ...this.state.formControls }
+    const control = { ...formControls[controlName] }
 
     control.value = event.target.value
     control.touched = true
@@ -101,8 +102,8 @@ export default class Auth extends Component {
           valid={control.valid}
           touched={control.touched}
           label={control.label}
-          errorMessage={control.errorMessage}
           shouldValidate={!!control.validation}
+          errorMessage={control.errorMessage}
           onChange={event => this.onChangeHandler(event, controlName)}
         />
       )
@@ -111,30 +112,32 @@ export default class Auth extends Component {
 
   render() {
     return (
-        <div className={classes.Auth}>
-          <div>
-            <h1>Авторизация</h1>
+      <div className={classes.Auth}>
+        <div>
+          <h1>Авторизация</h1>
 
-            <form onSubmit={this.submitHandler} className={classes.AuthForm}>
-              {this.renderInputs()}
+          <form onSubmit={this.submitHandler} className={classes.AuthForm}>
 
-              <Button
-                type={'success'}
-                onClick={this.loginHandler}
-                disabled={!this.state.isFormValid}
-              >
-                Войти
-              </Button>
-              <Button
-                type={'primary'}
-                onClick={this.registerHandler}
-                disabled={!this.state.isFormValid}
-              >
-                Зарегистрироваться
-              </Button>
-            </form>
-          </div>
+            { this.renderInputs() }
+
+            <Button
+              type="success"
+              onClick={this.loginHandler}
+              disabled={!this.state.isFormValid}
+            >
+              Войти
+            </Button>
+
+            <Button
+              type="primary"
+              onClick={this.registerHandler}
+              disabled={!this.state.isFormValid}
+            >
+              Зарегистрироваться
+            </Button>
+          </form>
         </div>
+      </div>
     )
   }
 }
