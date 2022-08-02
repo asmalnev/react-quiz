@@ -29,7 +29,7 @@ function createFormControls() {
   }
 }
 
-export class QuizCreator extends Component {
+class QuizCreator extends Component {
   state = {
     isFormValid: false,
     rightAnswerId: 1,
