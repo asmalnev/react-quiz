@@ -9,7 +9,6 @@ import {
   QUIZ_NEXT_QUESTION,
   QUIZ_RETRY
 } from './actionTypes'
-import finishedQuiz from '../../components/FinishedQuiz/FinishedQuiz'
 
 export function fetchQuizes() {
   return async dispatch => {
